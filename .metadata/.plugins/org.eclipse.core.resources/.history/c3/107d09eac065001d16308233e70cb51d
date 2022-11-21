@@ -1,0 +1,40 @@
+package com.senior.avaliacao.qs5;
+
+/**
+ * 
+ * @author Pablo Mafessoli (mafessolip@gmail.com)
+ *
+ */
+
+public class Limpa implements ILimpa {
+	public static void main(String[] args) {
+
+		Limpa l = new Limpa();
+		l.limpar("O rato roeu a roupa do rei de roma", "ro");
+
+	}
+
+	@Override
+	public String limpar(String string, String substring) {
+		StringBuilder texto = new StringBuilder();
+		StringBuilder currentChunk = new StringBuilder();
+		texto.append(string);
+		int substringTamanho = substring.length();
+
+		for (int i = 0; i < texto.length() - substringTamanho; i++) {
+
+			for (int x = 0; x < substringTamanho; x++) {
+				currentChunk.append(texto.charAt(i + x));
+			}
+
+			if (currentChunk.toString().equals(substring)) {
+				texto.delete(i, i + substringTamanho);
+			}
+		}
+		System.out.println(texto);
+
+		return substring;
+
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.senior.avaliacao.qs8;
+
+/**
+ * 
+ * @author Pablo Mafessoli (mafessolip@gmail.com)
+ *
+ */
+
+public class JurosCompostos implements IJurosCompostos {
+
+	public static void main(String[] args) {
+		JurosCompostos j = new JurosCompostos();
+		j.calcularValorFinal(100, 10, 3);
+	}
+
+	@Override
+	public double calcularValorFinal(double valorInicial, double juros, int parcelas) {
+	 
+		double valorFinal = Math.pow((1 + juros/100), parcelas)-1;
+		System.out.println(valorFinal);
+		return valorInicial + valorFinal * valorFinal;
+	
+	}
+
+}

@@ -1,0 +1,35 @@
+package com.senior.avaliacao.qs5;
+
+/**
+ * 
+ * @author Pablo Mafessoli (mafessolip@gmail.com)
+ *
+ */
+
+public class Limpa implements ILimpa {
+	public static void main(String[] args) {
+
+		Limpa l = new Limpa();
+		l.limpar("Meu nome é pablo Mafesolsoli e eu gosto de palenta", "pa");
+
+	}
+
+	@Override
+	public String limpar(String string, String substring) {
+		StringBuilder text = new StringBuilder();
+		text.append(substring);
+		String piece = substring;
+
+		int pieceSize = piece.length();
+		for (int i = 0; i < text.length() - pieceSize; i++) {
+			StringBuilder currentChunk = new StringBuilder();
+			for (int x = 0; x < pieceSize; x++) {
+				currentChunk.append(text.charAt(i + x));
+			}
+			if (currentChunk.toString().equals(piece)) {
+				text.delete(i, i + pieceSize);
+			}
+		}
+		System.out.println(text);
+	}
+}

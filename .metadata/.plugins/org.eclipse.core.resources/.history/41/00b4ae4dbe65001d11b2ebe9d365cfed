@@ -1,0 +1,50 @@
+package com.senior.avaliacao.qs1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ * @author Pablo Mafessoli (mafessolip@gmail.com)
+ *
+ */
+
+public class NotaFiscal implements INotaFiscal {
+
+	public static void main(String[] args) {
+		NotaFiscal t = new NotaFiscal();
+
+		List<Double> valorParcelasTeste = new ArrayList<>();
+		valorParcelasTeste.addAll(t.geraParcelas(18, 487.33));
+
+	}
+
+	@Override
+	public List<Double> geraParcelas(int nrParcelas, double valorTotal) {
+		List<Double> lista = new ArrayList<>();
+
+		System.out.println("valor total formatado: " + valorTotal);
+		double total = valorTotal;
+		double valorParcela = 0;
+		double ultimaParcela = 0;
+		double diferenca = 0;
+
+		for (int i = 0; i < nrParcelas; i++) {
+			if (valorTotal % nrParcelas == 0) {
+				valorParcela = valorTotal / nrParcelas;
+				lista.add(valorParcela);
+				System.out.println(lista);
+			} else {
+				valorTotal = Math.round((valorTotal / nrParcelas) * 100);
+				valorTotal = valorTotal / 100;
+				diferenca = total - (valorTotal * nrParcelas);
+				diferenca = Math.round(diferenca * 100);
+				diferenca = diferenca / 100;
+				ultimaParcela = valorTotal + diferenca;
+
+			}
+		}
+		return lista;
+	}
+
+}
